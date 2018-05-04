@@ -52,8 +52,10 @@
                 
 			 global_ = this.responseText
 			 
+			 if(global_ == 0 || global_ == "0") 
+			 {
 			 cordova.plugins.notification.badge.set(global_, showToast);
-			 
+			 }
 					 //alert(2);
 			 
 				
@@ -229,7 +231,7 @@
                         window.plugins.toast.showShortBottom(String(text));
                     }
                     else {
-                        alert(text);
+                       // alert(text);
                     }
                 }, 100);
             };
