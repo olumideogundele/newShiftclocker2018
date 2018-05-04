@@ -14,7 +14,7 @@
 	 {
 		 
 		 
-		 var z=prompt("enter your name...");
+		 var z=prompt("Welcome Guest, Tell me your username: ");
 		    username = localStorage.getItem("username");
 		  localStorage.setItem("shiftusername", z);
 	 }
@@ -52,10 +52,9 @@
                 
 			 global_ = this.responseText
 			 
-			 if(global_ == 0 || global_ == "0") 
-			 {
+			 
 			 cordova.plugins.notification.badge.set(global_, showToast);
-			 }
+			 
 					 //alert(2);
 			 
 				
