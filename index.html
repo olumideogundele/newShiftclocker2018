@@ -22,13 +22,8 @@
 	 {
 		  
 		  username = localStorage.getItem("shiftusername");
-		 
-	 }
-		
-	 
-		
-		
-	  global_ = "";
+		  
+		   global_ = "";
 	  
 	  
 	   
@@ -52,8 +47,10 @@
                 
 			 global_ = this.responseText
 			 
-			 
+			 if(global_ != 0 || global_ != "0" || global_ != "")
+ 			 {
 			 cordova.plugins.notification.badge.set(global_, showToast);
+			 }
 			 
 					 //alert(2);
 			 
@@ -64,6 +61,13 @@
         xmlhttp.send();
     }
 	
+		 
+	 }
+		
+	 
+		
+		
+	 
  
 }
 	</script>
@@ -263,7 +267,10 @@
 
             setBadge = function (rand) {
                 var number = rand ? Math.round(Math.random()*100) : 10;
+				 if(number != 0 || number != "0" || number != "" || number != null)
+ 			 {
                 cordova.plugins.notification.badge.set(number, showToast);
+			 }
             };
 
             getBadge = function () {
@@ -296,6 +303,7 @@
 
             changeTitle = function () {
                 var title = cordova.plugins.notification.badge._config.title + '_new';
+
 
                 cordova.plugins.notification.badge.configure({
                     title: title
