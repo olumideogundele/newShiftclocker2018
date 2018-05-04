@@ -3,9 +3,39 @@
  <script>
 	
 	function showUser() {
+		var username = "-";
+	if (typeof(Storage) !== "undefined") {
+    
+      username = localStorage.getItem("shiftusername");
+	}
+	
+	
+	 if(username == "-" || username == null || username == "" || username == "null")
+	 {
+		 
+		 
+		 var z=prompt("enter your name...");
+		    username = localStorage.getItem("username");
+		  localStorage.setItem("shiftusername", z);
+	 }
+	 else
+	 {
+		  
+		  username = localStorage.getItem("shiftusername");
+		 
+	 }
+		
+	 
+		
+		
 	  global_ = "";
+	  
+	  
 	   
-	str = "not"
+	str = username;
+	
+	
+	//alert(str);
     if (str == "") {
         
         return;
