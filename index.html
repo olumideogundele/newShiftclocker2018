@@ -30,7 +30,7 @@
 	str = username;
 	
 	
- alert(str+ " - "+username);
+ //alert(str+ " - "+username);
     if (str == "") {
         
         return;
@@ -47,10 +47,10 @@
                 
 			 global_ = this.responseText
 			 
-			 if(global_ != 0 || global_ != "0" || global_ != "")
+			 if(global_ != "--" || global_ != "-" || global_ != "")
  			 {
 			 cordova.plugins.notification.badge.set(global_, showToast);
-			// alert(global_);
+			  alert(global_);
 			 }
 			 
 					 
@@ -230,19 +230,17 @@
                 setTimeout(function () {
                     if (window.Windows !== undefined) {
 
-						if(text != 0 || text != "0" || text != "")
-						{
+						 
                         showWinDialog(text);
-						}
+						 
                     } else
                     if (window.plugins && window.plugins.toast) {
-						if(text != 0 || text != "0" || text != "")
-						{
+						 
                         window.plugins.toast.showShortBottom(String(text));
-						}
+						 
                     }
                     else {
-                       // alert(text);
+                         alert(text);
                     }
                 }, 100);
             };
@@ -268,10 +266,9 @@
 
             setBadge = function (rand) {
                 var number = rand ? Math.round(Math.random()*100) : 10;
-				 if(number != 0 || number != "0" || number != "" || number != null)
- 			 {
+			 
                 cordova.plugins.notification.badge.set(number, showToast);
-			 }
+			  
             };
 
             getBadge = function () {
