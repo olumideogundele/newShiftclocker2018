@@ -3,9 +3,34 @@
  <script>
 	
 	function showUser() {
-	  global_ = "";
+		var username = "-";
+	if (typeof(Storage) !== "undefined") {
+    
+      username = localStorage.getItem("shiftusername");
+	}
+	
+	
+	 if(username == "-" || username == null || username == "" || username == "null")
+	 {
+		 
+		 
+		 var z=prompt("Welcome Guest,\n Tell me your username: ");
+		    username = localStorage.getItem("username");
+		  localStorage.setItem("shiftusername", z);
+	 }
+	 else
+	 {
+		  
+		  username = localStorage.getItem("shiftusername");
+		  
+		   global_ = "";
+	  
+	  
 	   
-	str = "not"
+	str = username;
+	
+	
+ //alert(str);
     if (str == "") {
         
         return;
@@ -22,16 +47,28 @@
                 
 			 global_ = this.responseText
 			 
+			 if(global_ != 0 || global_ != "0" || global_ != "" || global_ != "-" || global_ != "--")
+ 			 {
 			 cordova.plugins.notification.badge.set(global_, showToast);
-					 alert(global_);
+			// alert(global_);
+			 }
+			 
+					 
 			 
 				
             }
         };
-       xmlhttp.open("GET","http://test2.shiftclocker.com/dcare/message-count.php?q="+str,true);
+        xmlhttp.open("GET","http://test2.shiftclocker.com/dcare/message-count.php?q="+str,true);
         xmlhttp.send();
     }
 	
+		 
+	 }
+		
+	 
+		
+		
+	 
  
 }
 	</script>
@@ -40,7 +77,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="0;URL='https://shiftclocker.com/test2/dcare/index.php'" />   
+    <meta http-equiv="refresh" content="2;URL='https://shiftclocker.com/test2/dcare/index.php'" />   
     <title>Shiftclocker | Punch in made easy......</title>
      <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 
