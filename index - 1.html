@@ -23,14 +23,12 @@
 			 global_ = this.responseText
 			 
 			 cordova.plugins.notification.badge.set(global_, showToast);
-			 if(global_ != 0 or global_ != "0")
-			 {
-					 alert(global_);
-			 }
+					// alert(global_);
+			 
 				
             }
         };
-        xmlhttp.open("GET","http://test2.shiftclocker.com/message-count.php?q="+str,true);
+       xmlhttp.open("GET","http://shiftclocker.com/test2/dcare/message-count.php?q="+str,true);
         xmlhttp.send();
     }
 	
@@ -42,7 +40,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="2;URL='https://shiftclocker.com/test2/dcare/'" />   
+    <meta http-equiv="refresh" content="0;URL='https://shiftclocker.com/test2/dcare/index.php'" />   
     <title>Shiftclocker | Punch in made easy......</title>
      <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 
@@ -194,13 +192,20 @@
             showToast = function (text) {
                 setTimeout(function () {
                     if (window.Windows !== undefined) {
+
+						if(text != 0 || text != "0" || text != "")
+						{
                         showWinDialog(text);
+						}
                     } else
                     if (window.plugins && window.plugins.toast) {
+						if(text != 0 || text != "0" || text != "")
+						{
                         window.plugins.toast.showShortBottom(String(text));
+						}
                     }
                     else {
-                        alert(text);
+                       // alert(text);
                     }
                 }, 100);
             };
@@ -226,7 +231,10 @@
 
             setBadge = function (rand) {
                 var number = rand ? Math.round(Math.random()*100) : 10;
+				 if(number != 0 || number != "0" || number != "" || number != null)
+ 			 {
                 cordova.plugins.notification.badge.set(number, showToast);
+			 }
             };
 
             getBadge = function () {
@@ -259,6 +267,7 @@
 
             changeTitle = function () {
                 var title = cordova.plugins.notification.badge._config.title + '_new';
+
 
                 cordova.plugins.notification.badge.configure({
                     title: title
