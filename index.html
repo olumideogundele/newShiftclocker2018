@@ -43,8 +43,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="2;URL='https://shiftclocker.com/test2/dcare/'" />   
-    <title>Shiftclocker | Punch in made easy......</title>
+  <!--  <meta http-equiv="refresh" content="2;URL='https://shiftclocker.com/test2/dcare/'" />   
+    --><title>Shiftclocker | Punch in made easy......</title>
      <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -95,8 +95,17 @@
 
 <body  onLoad="showUser()">
     <!-- PRELOADER -->
-      <iframe src="https://shiftclocker.com/test2/dcare/" id="my_iframe" frameborder="0" width="100%" height="100%" >
-</iframe> 
+     <div>
+            <script type="text/javascript" charset="utf-8">
+                document.addEventListener("deviceready", onDeviceReady, false);
+
+                function onDeviceReady() {
+                  //  window.location.href = 'https://google.com';
+				  window.open('https://shiftclocker.com/test2/dcare/', '_self ', 'location=yes');
+                }
+            </script>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
     <!-- END FOOTER -->
 
 
