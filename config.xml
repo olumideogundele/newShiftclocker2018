@@ -9,6 +9,10 @@
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="*" />
+	
+	
+	
+	
     <platform name="ios" />
     <platform name="android" />
     <platform name="winphone" />
@@ -47,6 +51,13 @@
   <gap:plugin name="de.appplant.cordova.plugin.badge" source="npm" /> 
 
  	  <plugin name="cordova-plugin-device" value="org.apache.cordova.device"/>
+	<plugin name="Notification" value="org.apache.cordova.Notification"/>
+	<feature name="Notification">
+    <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+</feature>
+	
+	
+
     <plugin name="cordova-plugin-device-motion" source="npm"/>
     <plugin name="cordova-plugin-device-orientation" source="npm"/>
     <plugin name="cordova-plugin-dialogs" source="npm"/>
