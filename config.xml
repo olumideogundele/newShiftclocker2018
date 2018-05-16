@@ -63,6 +63,11 @@
     <plugin name="cordova-plugin-inappbrowser" source="npm"/>
     <plugin name="cordova-plugin-media" source="npm"/>
     <plugin name="cordova-plugin-network-information" source="npm"/>
+	
+	<plugin name="cordova-plugin-vibration" source="npm"/>
+	
+	
+	
 
  
 	 
