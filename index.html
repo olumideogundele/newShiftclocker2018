@@ -5,6 +5,9 @@
 
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
+	
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     // Wait for device API libraries to load
     //
     function onLoad() {
@@ -24,15 +27,17 @@
     function onDeviceReady() {
         //checkConnection();
 		alert("got here")
-		call(onlineFunction(), offlineFunction());
+		call();
      
 	
     }
 
        
  
-function call(onlineFunction,offlineFunction)
+function call()
 {
+	
+	alert("the call");
     var timeOutInteger = null;
     var timeOutOccured = false;
  
@@ -50,12 +55,13 @@ function call(onlineFunction,offlineFunction)
             {
                 if(!timeOutOccured){
                     clearTimeout(timeOutInteger);
-                    offlineFunction();
+                   // offlineFunction();
+					 alert("offline");
                 }
             }
             else
             {
-                var url = "http://yourservicehere/LeadWeight.jpg";
+                var url = "http://google.com/LeadWeight.jpg";
  
                     $.ajax({ type: "GET",
                             data: "{}",
@@ -66,13 +72,14 @@ function call(onlineFunction,offlineFunction)
                             {
                                 if(!timeOutOccured){
                                     clearTimeout(timeOutInteger);
-                                    onlineFunction();
+                                    //onlineFunction();
+									alert("online");
                                 }
                             },
                             error:function(xhr, textStatus, errorThrown) {
                                 if(!timeOutOccured){
                                     clearTimeout(timeOutInteger);
-                                    offlineFunction();
+                                     alert("offline");
                                 }
                             }
                         });
@@ -83,28 +90,17 @@ function call(onlineFunction,offlineFunction)
  
       timeOutInteger = setTimeout( function() {
                 timeOutOccured = true;
-                                offlineFunction();
+                               alert("offline");
                              }, 20 * 1000 );
 }
 
 
-
-offlineFunction()
-{
-	
-	alert("offline");
-}
-
-
-onlineFunction()
-{
-	alert("online");
-}	  
+   
    
 	   
     </script>
   </head>
-   <body onload="onLoad()">
+   <body>
  
    <!--  <iframe src="https://test2.shiftclocker.com/dcare" id="myIframe" style="height:300%;width:100%; border:none; left: 0; top: 0;"></iframe>--> 
   </body>
