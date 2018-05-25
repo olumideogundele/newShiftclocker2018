@@ -23,47 +23,69 @@
     //
     function onDeviceReady() {
         //checkConnection();
-      alert("got here");
-     navigator.network.isReachable("shiftclocker.com", reachableCallback, {});
+     
+function(onlineFunction,offlineFunction)
+{
+    var timeOutInteger = null;
+    var timeOutOccured = false;
+ 
+      var net_callback = function(reachability) {
+ 
+        // There is no consistency on the format of reachability
+            var networkState = reachability.code || reachability;
+ 
+            var states = {};
+            states[NetworkStatus.NOT_REACHABLE]                      = 'No network connection';
+            states[NetworkStatus.REACHABLE_VIA_CARRIER_DATA_NETWORK] = 'Carrier data connection';
+            states[NetworkStatus.REACHABLE_VIA_WIFI_NETWORK]         = 'WiFi connection';
+ 
+            if(states[networkState] == 'No network connection')
+            {
+                if(!timeOutOccured){
+                    clearTimeout(timeOutInteger);
+                    offlineFunction();
+                }
+            }
+            else
+            {
+                var url = "http://shiftclocker/LeadWeight.jpg";
+ 
+                    $.ajax({ type: "GET",
+                            data: "{}",
+                            url: url,
+                            cache: false,
+                            timeout: 20 * 1000,
+                            success:function(response)
+                            {
+                                if(!timeOutOccured){
+                                    clearTimeout(timeOutInteger);
+                                    onlineFunction();
+                                }
+                            },
+                            error:function(xhr, textStatus, errorThrown) {
+                                if(!timeOutOccured){
+                                    clearTimeout(timeOutInteger);
+                                    offlineFunction();
+                                }
+                            }
+                        });
+            }
+      };
+ 
+      navigator.network.isReachable("www.google.com", net_callback);
+ 
+      timeOutInteger = setTimeout( function() {
+                timeOutOccured = true;
+                                offlineFunction();
+                             }, 20 * 1000 );
+}
+	
     }
 
-        function checkConnection() {
-           
-		    var networkState = reachability.code || reachability;
-  var states = {};
-  states[NetworkStatus.NOT_REACHABLE]                      = 'No network connection';
-  states[NetworkStatus.REACHABLE_VIA_CARRIER_DATA_NETWORK] = 'Carrier data connection';
-  states[NetworkStatus.REACHABLE_VIA_WIFI_NETWORK]         = 'WiFi connection';
-  if (networkState != 0) 
-  {
-	  alert("onnline");
-  online = true;
-  }
-  else
-  {
-	  alert("offline");	  
-  }
-		   
-        }
-		
-		var online = navigator.onLine || false;
-$(document).ready(function() { 
-  $(document).bind('deviceready', function(){
-    onDeviceReady()
-  })
-  // Your main code
-  alert("Your main code");
-})
- 
-if(online) {
-  // make a request
-  
-  alert("make a request");
-} else {
-  // load from localStorage
-  alert("load from localStorage");
-}
-
+       
+	  
+   
+	   
     </script>
   </head>
    <body onload="onLoad()">
