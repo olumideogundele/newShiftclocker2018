@@ -24,36 +24,43 @@
     function onDeviceReady() {
         //checkConnection();
       alert("got here");
-       var networkState = checkConnection();
-   /* load local files if there is not network connection */
-                  if (networkState == Connection.NONE) {
-                      window.location="error.html";
-                  } else {
-              // window.location="http://test2.shiftclocker.com/dcare";
-                    //window.open("http://test2.shiftclocker.com/dcare");
-                  }
+     navigator.network.isReachable("google.com", reachableCallback, {});
     }
 
         function checkConnection() {
-            var networkState = navigator.connection.type;
-
-            var states = {};
-            states[Connection.UNKNOWN]  = 'Unknown connection';
-            states[Connection.ETHERNET] = 'Ethernet connection';
-            states[Connection.WIFI]     = 'WiFi connection';
-            states[Connection.CELL_2G]  = 'Cell 2G connection';
-            states[Connection.CELL_3G]  = 'Cell 3G connection';
-            states[Connection.CELL_4G]  = 'Cell 4G connection';
-            states[Connection.CELL]     = 'Cell generic connection';
-            states[Connection.NONE]     = 'No network connection';
-  return networkState;
-            //alert('Connection type: ' + states[networkState]);
+           
+		    var networkState = reachability.code || reachability;
+  var states = {};
+  states[NetworkStatus.NOT_REACHABLE]                      = 'No network connection';
+  states[NetworkStatus.REACHABLE_VIA_CARRIER_DATA_NETWORK] = 'Carrier data connection';
+  states[NetworkStatus.REACHABLE_VIA_WIFI_NETWORK]         = 'WiFi connection';
+  if (networkState != 0) online = true;
+		   
+		   
         }
+		
+		var online = navigator.onLine || false;
+$(document).ready(function() { 
+  $(document).bind('deviceready', function(){
+    onDeviceReady()
+  })
+  // Your main code
+  alert("Your main code");
+})
+ 
+if(online) {
+  // make a request
+  
+  alert("make a request");
+} else {
+  // load from localStorage
+  alert("load from localStorage");
+}
 
     </script>
   </head>
    <body onload="onLoad()">
  
-     <iframe src="https://test2.shiftclocker.com/dcare" style="height:300%;width:100%; border:none; left: 0; top: 0;"></iframe> 
+     <iframe src="https://test2.shiftclocker.com/dcare" id="myIframe" style="height:300%;width:100%; border:none; left: 0; top: 0;"></iframe> 
   </body>
 </html>
