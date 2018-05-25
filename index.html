@@ -23,8 +23,15 @@
     //
     function onDeviceReady() {
         //checkConnection();
+		alert("got here")
+		call(onlineFunction(), offlineFunction());
      
-function(onlineFunction,offlineFunction)
+	
+    }
+
+       
+ 
+function call(onlineFunction,offlineFunction)
 {
     var timeOutInteger = null;
     var timeOutOccured = false;
@@ -48,7 +55,7 @@ function(onlineFunction,offlineFunction)
             }
             else
             {
-                var url = "http://shiftclocker/LeadWeight.jpg";
+                var url = "http://yourservicehere/LeadWeight.jpg";
  
                     $.ajax({ type: "GET",
                             data: "{}",
@@ -79,11 +86,20 @@ function(onlineFunction,offlineFunction)
                                 offlineFunction();
                              }, 20 * 1000 );
 }
-	
-    }
 
-       
-	  
+
+
+offlineFunction()
+{
+	
+	alert("offline");
+}
+
+
+onlineFunction()
+{
+	alert("online");
+}	  
    
 	   
     </script>
