@@ -115,7 +115,7 @@
  
 		
 				<feature name="http://tizen.org/api/systeminfo" required="true"/>
-<plugin name="NetworkStatus" value="org.apache.cordova.NetworkManager" />
+ 
 		 
 		<feature name="http://api.phonegap.com/1.0/media" />
 		<feature name="http://api.phonegap.com/1.0/network" />
