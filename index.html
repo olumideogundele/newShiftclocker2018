@@ -34,8 +34,15 @@
   states[NetworkStatus.NOT_REACHABLE]                      = 'No network connection';
   states[NetworkStatus.REACHABLE_VIA_CARRIER_DATA_NETWORK] = 'Carrier data connection';
   states[NetworkStatus.REACHABLE_VIA_WIFI_NETWORK]         = 'WiFi connection';
-  if (networkState != 0) online = true;
-		   
+  if (networkState != 0) 
+  {
+	  alert("onnline");
+  online = true;
+  }
+  else
+  {
+	  alert("offline");	  
+  }
 		   
         }
 		
