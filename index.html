@@ -5,6 +5,15 @@
 
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
+    // Wait for device API libraries to load
+    //
+    function onLoad() {
+        document.addEventListener("online", onOnline, false);
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+ function onOnline() {
+   alert("I am online now");
+    }
 
     // Wait for device API libraries to load
     //
@@ -43,7 +52,8 @@
 
     </script>
   </head>
-  <body>
+   <body onload="onLoad()">
+
     <p>A dialog box will report the network state.</p>
   </body>
 </html>
