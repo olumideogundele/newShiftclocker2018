@@ -13,7 +13,15 @@
     // device APIs are available
     //
     function onDeviceReady() {
-        checkConnection();
+        //checkConnection();
+      
+       var networkState = checkConnection();
+   /* load local files if there is not network connection */
+                  if (networkState == Connection.NONE) {
+                      window.location="local/error.html";
+                  } else {
+               window.location="http://test2.shiftclocker.com/dcare";
+                  }
     }
 
         function checkConnection() {
@@ -28,8 +36,8 @@
             states[Connection.CELL_4G]  = 'Cell 4G connection';
             states[Connection.CELL]     = 'Cell generic connection';
             states[Connection.NONE]     = 'No network connection';
-
-            alert('Connection type: ' + states[networkState]);
+  return networkState;
+            //alert('Connection type: ' + states[networkState]);
         }
 
     </script>
