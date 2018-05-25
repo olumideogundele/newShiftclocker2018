@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Notification Example</title>
+    <title>navigator.connection.type Example</title>
 
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova-x.x.x.js"></script>
     <script type="text/javascript" charset="utf-8">
 
     // Wait for device API libraries to load
@@ -13,37 +13,28 @@
     // device APIs are available
     //
     function onDeviceReady() {
-        // Empty
+        checkConnection();
     }
 
-    // alert dialog dismissed
-        function alertDismissed() {
-            // do something
-          navigator.notification.beep(2);
-          navigator.vibrate(3000);
+        function checkConnection() {
+            var networkState = navigator.connection.type;
+
+            var states = {};
+            states[Connection.UNKNOWN]  = 'Unknown connection';
+            states[Connection.ETHERNET] = 'Ethernet connection';
+            states[Connection.WIFI]     = 'WiFi connection';
+            states[Connection.CELL_2G]  = 'Cell 2G connection';
+            states[Connection.CELL_3G]  = 'Cell 3G connection';
+            states[Connection.CELL_4G]  = 'Cell 4G connection';
+            states[Connection.CELL]     = 'Cell generic connection';
+            states[Connection.NONE]     = 'No network connection';
+
+            alert('Connection type: ' + states[networkState]);
         }
-
-    // Show a custom alertDismissed
-    //
-    function showAlert() {
-        navigator.notification.alert(
-            'You are the winner!',  // message
-            alertDismissed,         // callback
-            'Game Over',            // title
-            'Done'                  // buttonName
-        );
-    }
- function vibrate() {
-        navigator.notification.vibrate(2000);
-    }
 
     </script>
   </head>
   <body>
-    <p><a href="#" onclick="showAlert(); return false;">Showvvvv Alert</a></p>
-    
-    <p><a href="#" onclick="vibrate(); return false;">Vibrate</a></p>
-
-    
+    <p>A dialog box will report the network state.</p>
   </body>
 </html>
