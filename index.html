@@ -2,11 +2,31 @@
 <html>
   <head>
     <title>navigator.connection.type Example</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" charset="utf-8">
 
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    <script type="text/javascript" charset="utf-8">
 	
-	 
+	
+    // Wait for device API libraries to load
+    //
+	
+	
+		function showUrl()
+	{
+		$('#myIframe').show();
+			$("#myIframe").attr("src", "https://test2.shiftclocker.com/dcare");
+		
+	}
+	
+	
+    function onLoad() {
+        document.addEventListener("online", onOnline, false);
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+ function onOnline() {
+   alert("I am online now");
+    }
+
     // Wait for device API libraries to load
     //
     document.addEventListener("deviceready", onDeviceReady, false);
@@ -15,87 +35,41 @@
     //
     function onDeviceReady() {
         //checkConnection();
-		alert("got here")
-		call();
-     
-	
+      alert("got here");
+       var networkState = checkConnection();
+   /* load local files if there is not network connection */
+                  if (networkState == Connection.NONE) {
+                      window.location="error.html";
+                  } else {
+              // window.location="http://test2.shiftclocker.com/dcare";
+                    //window.open("http://test2.shiftclocker.com/dcare");
+					
+					showUrl();
+                  }
     }
 
-       
- 
-function call()
-{
-	
-	alert("the call");
-    var timeOutInteger = null;
-    var timeOutOccured = false;
- 
-      var net_callback = function(reachability) {
- 
-        // There is no consistency on the format of reachability
-            var networkState = reachability.code || reachability;
- alert("how far 1");
+        function checkConnection() {
+            var networkState = navigator.connection.type;
+
             var states = {};
-            states[NetworkStatus.NOT_REACHABLE]                      = 'No network connection';
-            states[NetworkStatus.REACHABLE_VIA_CARRIER_DATA_NETWORK] = 'Carrier data connection';
-            states[NetworkStatus.REACHABLE_VIA_WIFI_NETWORK]         = 'WiFi connection';
-			
-			 alert("how far 2");
- 
-            if(states[networkState] == 'No network connection')
-            {
-                if(!timeOutOccured){
-                    clearTimeout(timeOutInteger);
-                   // offlineFunction();
-					 alert("offline");
-                }
-            }
-            else
-            {
+            states[Connection.UNKNOWN]  = 'Unknown connection';
+            states[Connection.ETHERNET] = 'Ethernet connection';
+            states[Connection.WIFI]     = 'WiFi connection';
+            states[Connection.CELL_2G]  = 'Cell 2G connection';
+            states[Connection.CELL_3G]  = 'Cell 3G connection';
+            states[Connection.CELL_4G]  = 'Cell 4G connection';
+            states[Connection.CELL]     = 'Cell generic connection';
+            states[Connection.NONE]     = 'No network connection';
+  return networkState;
+            //alert('Connection type: ' + states[networkState]);
+        }
 
-		 alert("how far 3");
-		var url = "http://google.com/LeadWeight.jpg";
- 
-                    $.ajax({ type: "GET",
-                            data: "{}",
-                            url: url,
-                            cache: false,
-                            timeout: 20 * 1000,
-                            success:function(response)
-                            {
-                                if(!timeOutOccured){
-                                    clearTimeout(timeOutInteger);
-                                    //onlineFunction();
-									alert("online");
-                                }
-                            },
-                            error:function(xhr, textStatus, errorThrown) {
-                                if(!timeOutOccured){
-                                    clearTimeout(timeOutInteger);
-                                     alert("offline");
-                                }
-                            }
-                        });
-            }
-      };
- 
-      navigator.network.isReachable("www.google.com", net_callback);
- 
-      timeOutInteger = setTimeout( function() {
-                timeOutOccured = true;
-                               alert("offline");
-                             }, 20 * 1000 );
-}
-
-
-   
-   
-	   
     </script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    
   </head>
-   <body onLoad="call()">
+   <body onload="onLoad()">
  
-   <!--  <iframe src="https://test2.shiftclocker.com/dcare" id="myIframe" style="height:300%;width:100%; border:none; left: 0; top: 0;"></iframe>--> 
+     <iframe src="" id="myIframe" style="height:300%;width:100%; border:none; left: 0; top: 0;"></iframe> 
   </body>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </html>
