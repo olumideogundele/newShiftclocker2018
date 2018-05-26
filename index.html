@@ -34,11 +34,13 @@ function call()
  
         // There is no consistency on the format of reachability
             var networkState = reachability.code || reachability;
- 
+ alert("how far 1");
             var states = {};
             states[NetworkStatus.NOT_REACHABLE]                      = 'No network connection';
             states[NetworkStatus.REACHABLE_VIA_CARRIER_DATA_NETWORK] = 'Carrier data connection';
             states[NetworkStatus.REACHABLE_VIA_WIFI_NETWORK]         = 'WiFi connection';
+			
+			 alert("how far 2");
  
             if(states[networkState] == 'No network connection')
             {
@@ -50,7 +52,9 @@ function call()
             }
             else
             {
-                var url = "http://google.com/LeadWeight.jpg";
+
+		 alert("how far 3");
+		var url = "http://google.com/LeadWeight.jpg";
  
                     $.ajax({ type: "GET",
                             data: "{}",
@@ -93,5 +97,5 @@ function call()
  
    <!--  <iframe src="https://test2.shiftclocker.com/dcare" id="myIframe" style="height:300%;width:100%; border:none; left: 0; top: 0;"></iframe>--> 
   </body>
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </html>
