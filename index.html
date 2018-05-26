@@ -6,18 +6,7 @@
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
 	
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    // Wait for device API libraries to load
-    //
-    function onLoad() {
-        document.addEventListener("online", onOnline, false);
-        document.addEventListener("deviceready", onDeviceReady, false);
-    }
- function onOnline() {
-   alert("I am online now");
-    }
-
+	 
     // Wait for device API libraries to load
     //
     document.addEventListener("deviceready", onDeviceReady, false);
@@ -100,8 +89,9 @@ function call()
 	   
     </script>
   </head>
-   <body>
+   <body onLoad="call()">
  
    <!--  <iframe src="https://test2.shiftclocker.com/dcare" id="myIframe" style="height:300%;width:100%; border:none; left: 0; top: 0;"></iframe>--> 
   </body>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </html>
