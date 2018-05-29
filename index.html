@@ -4,18 +4,20 @@
     <title>navigator.connection.type Example</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script type="text/javascript" charset="utf-8">
-
-	
-	
-    // Wait for device API libraries to load
-    //
-	
+ 
 	
 		function showUrl()
 	{
-		alert("iframe");
-		$('#myIframe').show();
-			$("#myIframe").attr("src", "https://google.com");
+		 var ifrm = document.createElement('iframe');
+    ifrm.setAttribute('id', 'ifrm');
+    
+    //document.body.appendChild(ifrm); // to place at end of document
+    
+    // to place before another page element
+    var el = document.getElementById('marker');
+    el.parentNode.insertBefore(ifrm, el);
+    
+    ifrm.setAttribute('src', 'error.html');
 		
 	}
 	
@@ -72,6 +74,6 @@
   </head>
    <body onload="onLoad()">
  
-     <iframe src="" id="myIframe" style="height:300%;width:100%; border:none; left: 0; top: 0;"></iframe> 
+    
   </body>
 </html>
