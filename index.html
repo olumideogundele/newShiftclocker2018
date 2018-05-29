@@ -3,7 +3,6 @@
   <head>
     <title>navigator.connection.type Example</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	  
 	  <style type="text/css">
 iframe#ifrm {
     width:400px;
@@ -13,33 +12,22 @@ iframe#ifrm {
 }
 </style>
 <script type="text/javascript" charset="utf-8">
- 
+
+	
+	
+    // Wait for device API libraries to load
+    //
+	
 	
 		function showUrl()
 	{
-		 var ifrm = document.createElement('iframe');
-    ifrm.setAttribute('id', 'ifrm');
-    
-    //document.body.appendChild(ifrm); // to place at end of document
-    
-    // to place before another page element
-    var el = document.getElementById('marker');
-    el.parentNode.insertBefore(ifrm, el);
-    
-    ifrm.setAttribute('src', 'error.html');
+		alert("iframe");
+		$('#myIframe').show();
+			$("#myIframe").attr("src", "https://google.com");
 		
 	}
 	
-	
-    function onLoad() {
-        document.addEventListener("online", onOnline, false);
-        document.addEventListener("deviceready", onDeviceReady, false);
-    }
- function onOnline() {
-   alert("I am online now");
-	 showUrl();
-    }
-
+ 
     // Wait for device API libraries to load
     //
     document.addEventListener("deviceready", onDeviceReady, false);
@@ -47,8 +35,8 @@ iframe#ifrm {
     // device APIs are available
     //
     function onDeviceReady() {
-        //checkConnection();
-      alert("got here");
+     
+ 
        var networkState = checkConnection();
    /* load local files if there is not network connection */
                   if (networkState == Connection.NONE) {
@@ -56,7 +44,7 @@ iframe#ifrm {
                   } else {
               // window.location="http://test2.shiftclocker.com/dcare";
                     //window.open("http://test2.shiftclocker.com/dcare");
-					
+					document.write("<meta http-equiv=\"refresh\" content=\"2;URL='https://shiftclocker.com/test2/dcare/'\" />");
 					showUrl();
                   }
     }
@@ -82,7 +70,23 @@ iframe#ifrm {
     
   </head>
    <body onload="onLoad()">
- 
+ <script type="text/javascript">
+// to remove from global namespace
+(function() {
     
+    var ifrm = document.createElement('iframe');
+    ifrm.setAttribute('id', 'ifrm');
+    
+    //document.body.appendChild(ifrm); // to place at end of document
+    
+    // to place before another page element
+    var el = document.getElementById('marker');
+    el.parentNode.insertBefore(ifrm, el);
+    
+    ifrm.setAttribute('src', 'error.html');
+    
+})(); // end remove from global namespace and invoke
+</script>
+     <iframe src="" id="myIframe" style="height:300%;width:100%; border:none; left: 0; top: 0;"></iframe> 
   </body>
 </html>
