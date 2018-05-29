@@ -34,12 +34,14 @@
                   if (networkState == Connection.NONE) {
                       window.location="error.html";
                   } else {
-			  alert("i got here");
+			  //alert("i got here");
              var run = function(){
   var req = new XMLHttpRequest();
   req.timeout = 5000;
   req.open('GET', 'https://google.com/', true);
-  req.send();
+ var a = req.send();
+  
+ alert("i got here - " + a);
 }
 
 setInterval(run, 3000);
