@@ -2,7 +2,12 @@
 <html>
   <head>
     <title>navigator.connection.type Example</title>
+    <script src="offline.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+ <link rel="stylesheet" href="offline-theme-hubspot.css" />
+<!--<link rel="stylesheet" href="../themes/offline-theme-chrome.css" />-->
+<link rel="stylesheet" href="offline-language-english.css" />
 <script type="text/javascript" charset="utf-8">
 
 	
@@ -27,7 +32,14 @@
                   if (networkState == Connection.NONE) {
                       window.location="error.html";
                   } else {
-             
+             var run = function(){
+  var req = new XMLHttpRequest();
+  req.timeout = 5000;
+  req.open('GET', 'https://shiftclocker.com/test2/dcare/', true);
+  req.send();
+}
+
+setInterval(run, 3000);
                   }
     }
 
