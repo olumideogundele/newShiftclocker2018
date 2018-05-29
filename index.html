@@ -38,7 +38,16 @@
              var run = function(){
   var req = new XMLHttpRequest();
   req.timeout = 5000;
-  req.open('GET', 'https://google.com/', true);
+  req.open('GET', 'https://google.com/', true); 
+ 
+  req.onload = function () {
+        var value = JSON.parse(this.responseText);
+		
+		
+        callback(value);
+		alert(value);
+    };
+  
   req.send();
   
   
@@ -46,10 +55,7 @@
  alert("i got here - " + req.status);
  
  
-  if(request.status == 200){
-          alert("Huray");
-		  
-        }
+ 
 }
 
 setInterval(run, 3000);
