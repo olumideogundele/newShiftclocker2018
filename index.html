@@ -3,14 +3,6 @@
   <head>
     <title>navigator.connection.type Example</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	  <style type="text/css">
-iframe#ifrm {
-    width:400px;
-    height:150px;
-    border:1px solid #ccc;
-    margin: 4px 0 6px;
-}
-</style>
 <script type="text/javascript" charset="utf-8">
 
 	
@@ -18,14 +10,7 @@ iframe#ifrm {
     // Wait for device API libraries to load
     //
 	
-	
-		function showUrl()
-	{
-		alert("iframe");
-		$('#myIframe').show();
-			$("#myIframe").attr("src", "https://google.com");
-		
-	}
+	 
 	
  
     // Wait for device API libraries to load
@@ -42,10 +27,7 @@ iframe#ifrm {
                   if (networkState == Connection.NONE) {
                       window.location="error.html";
                   } else {
-              // window.location="http://test2.shiftclocker.com/dcare";
-                    //window.open("http://test2.shiftclocker.com/dcare");
-					document.write("<meta http-equiv=\"refresh\" content=\"2;URL='https://shiftclocker.com/test2/dcare/'\" />");
-					showUrl();
+             
                   }
     }
 
@@ -67,26 +49,10 @@ iframe#ifrm {
 
     </script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
-    
+     <meta http-equiv="refresh" content="2;URL='https://shiftclocker.com/test2/dcare/'" />
   </head>
-   <body onload="onLoad()">
- <script type="text/javascript">
-// to remove from global namespace
-(function() {
-    
-    var ifrm = document.createElement('iframe');
-    ifrm.setAttribute('id', 'ifrm');
-    
-    //document.body.appendChild(ifrm); // to place at end of document
-    
-    // to place before another page element
-    var el = document.getElementById('marker');
-    el.parentNode.insertBefore(ifrm, el);
-    
-    ifrm.setAttribute('src', 'error.html');
-    
-})(); // end remove from global namespace and invoke
-</script>
-     <iframe src="" id="myIframe" style="height:300%;width:100%; border:none; left: 0; top: 0;"></iframe> 
+   <body>
+ 
+      
   </body>
 </html>
