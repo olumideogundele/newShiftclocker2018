@@ -37,18 +37,25 @@
 			  //alert("i got here");
              var run = function(){
   var req = new XMLHttpRequest();
-  req.timeout = 5000;
-		      
+ 
+	 req.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                
+			 
+					 alert("true");
+			 
+				
+            }
+			else
+			{
+			alert("false");
+			
+			}
+        };
+		     req.timeout = 5000;	      
   req.open('GET', 'https://google.com/', true); 
    req.send();
-	  if (req.readyState === 4)
-	  {   
-      alert("True");
-	  }
-    else
-    {
-        alert("False");  
-    }
+ 
   
 
   
