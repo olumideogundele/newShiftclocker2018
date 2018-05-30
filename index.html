@@ -38,22 +38,19 @@
              var run = function(){
   var req = new XMLHttpRequest();
   req.timeout = 5000;
-		     
-	var rawdata = this.responseText;
-          //          var json = JSON.parse(rawdata); //parses the query result
-            //        var a = callback(json);	     
-	 alert("i got here ... " + req.responseText);
- alert("i got here 2... " + req.status);
-		     alert("Erorr Occured: "+req.readyState);	     
-		     
-		     
-		     
- var ab =  req.open('GET', 'https://google.com/', true); 
- 
-	    alert("Erorr Occured 2: "+ab);	     
- 
+		      
+  req.open('GET', 'https://google.com/', true); 
+   req.send();
+	  if (req.readyState === 4)
+	  {   
+      alert("True");
+	  }
+    else
+    {
+        alert("False");  
+    }
   
-  req.send();
+
   
   
   
