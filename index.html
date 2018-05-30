@@ -39,7 +39,11 @@
   var req = new XMLHttpRequest();
   req.timeout = 5000;
   req.open('GET', 'https://google.com/', true); 
- 
+  var value = JSON.parse(this.responseText);
+		     
+	alert(value+"callback");	     
+		     
+		     
   req.onload = function () {
         var value = JSON.parse(this.responseText);
 		
