@@ -42,21 +42,22 @@
 	var rawdata = this.responseText;
           //          var json = JSON.parse(rawdata); //parses the query result
             //        var a = callback(json);	     
+	 alert("i got here ... " + req.responseText);
+ alert("i got here 2... " + req.status);
+		     alert("Erorr Occured: "+req.readyState);	     
 		     
 		     
 		     
-		     
-  req.open('GET', 'https://google.com/', true); 
+ var ab =  req.open('GET', 'https://google.com/', true); 
  
-		     
+	    alert("Erorr Occured 2: "+ab);	     
  
   
   req.send();
   
   
   
- alert("i got here ... " + req.responseText);
- alert("i got here 2... " + req.status);
+
  
  
 }
